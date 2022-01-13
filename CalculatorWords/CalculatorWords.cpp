@@ -15,7 +15,7 @@ using namespace std;
 // While I have all the letters as key in the map, this is a more convenient method
 const char letters[] = {'h', 'e', 'l', 'o', 'b', 's', 'i', 'g'};
 
-map<char, int> number_associated{ {'h', 4}, {'e', 3}, {'l', 1}, {'o', 0}, {'b', 9}, { 's', 5 }, { 'i', 1 }, {'g', 6} } ;
+map<char, int> number_associated{ {'h', 4}, {'e', 3}, {'l', 1}, {'o', 0}, {'b', 8}, { 's', 5 }, { 'i', 1 }, {'g', 6} } ;
 
 // Input: a string to turn into a series of calculator-compatible numbers represented as a string
 // Output: a calculator-compatible number representing the input string
