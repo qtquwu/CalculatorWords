@@ -57,7 +57,8 @@ int main()
 	}
 	for (auto i = validWords.begin(); i != validWords.end(); i++) {
 		cout << *i << '\n';
-		calculatorwords << *i << '\n';
+		if (canWrite)
+			calculatorwords << *i << '\n';
 	}
 
 	return 0;
