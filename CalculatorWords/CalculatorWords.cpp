@@ -5,12 +5,33 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <map>
+#include <iomanip>
+
+using namespace std;
 
 // A set of letters that can be typed on a calculator
 // This set is not necessarily comprehensive
+// While I have all the letters as key in the map, this is a more convenient method
 const char letters[] = {'h', 'e', 'l', 'o', 'b', 's', 'i', 'g'};
 
-using namespace std;
+map<char, int> number_associated{ {'h', 4}, {'e', 3}, {'l', 1}, {'o', 0}, {'b', 9}, { 's', 5 }, { 'i', 1 }, {'g', 6} } ;
+
+// Input: a string to turn into a series of calculator-compatible numbers represented as a string
+// Output: a calculator-compatible number representing the input string
+string word_to_number(string word) {
+	string output;
+	// 
+	for (int i = 0; i < word.size(); i++) {
+		auto found = number_associated.find(word[i]);
+		if (found == number_associated.end()) {
+			return "An invalid character was found; could not turn into calculator code\n";
+		}
+		// This is maybe a stupid way of turning an integer into a string as opposed to just storing strings in the mapping but whatever
+		output.insert(0,string(1,"0123456789"[found->second]));
+	}
+	return output;
+}
 
 int main()
 {
@@ -56,9 +77,9 @@ int main()
 		canWrite = false;
 	}
 	for (auto i = validWords.begin(); i != validWords.end(); i++) {
-		cout << *i << '\n';
+		cout << *i << setw(20) << word_to_number(*i) << '\n';
 		if (canWrite)
-			calculatorwords << *i << '\n';
+			calculatorwords << *i << setw(20) << word_to_number(*i) << '\n';
 	}
 
 	return 0;
